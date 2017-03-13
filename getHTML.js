@@ -1,10 +1,10 @@
 var options = {
     host: 'sytantris.github.io',
-    path: '/http-examples/step2.html'
+    path: '/http-examples/step4.html'
   };
 
 
-function getAndPrintHTML (options) {
+function getHTML (options, callback) {
 
   var https = require('https');
 
@@ -17,7 +17,7 @@ function getAndPrintHTML (options) {
       for (i = 0; i < data.length; i++) {
         allTheData += data[i];
       }
-      console.log(allTheData);
+      callback(allTheData);
     });
 
     response.on('end', function() {
@@ -28,4 +28,9 @@ function getAndPrintHTML (options) {
 
 }
 
-getAndPrintHTML ();
+function printHTML (html) {
+  console.log(html);
+}
+
+
+getHTML (options, printHTML);
