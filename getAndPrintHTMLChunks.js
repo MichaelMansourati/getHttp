@@ -5,12 +5,14 @@ function getAndPrintHTMLChunks () {
     path: '/http-examples/step1.html'
   };
 
+  var https = require('https');
+
   https.get(requestOptions, function (response) {
 
     response.setEncoding('utf8');
 
     response.on('data', function (data) {
-      console.log('Chunk Received. Length:', data.length);
+      console.log('\n' + data);
     });
 
     response.on('end', function() {
@@ -20,3 +22,5 @@ function getAndPrintHTMLChunks () {
   });
 
 }
+
+getAndPrintHTMLChunks ();
